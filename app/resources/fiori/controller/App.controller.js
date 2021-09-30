@@ -9,6 +9,14 @@ sap.ui.define([
 			// apply content density mode to root view
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 		}
+		,
+        toCreate: function () {
+            // apply content density mode to root view
+            this.getOwnerComponent()
+            .getRouter()
+            .navTo("RouteCreate", {});
+        }
+
 	});
 
 });

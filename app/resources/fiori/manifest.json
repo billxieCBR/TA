@@ -104,6 +104,13 @@
 					"pattern": "SafetyIncidents{objectId}",
 					"name": "object",
 					"target": ["object"]
+				},
+				{
+					"name": "RouteCreate",
+					"pattern": "create",
+					"target": [
+						"create"
+					]
 				}
 			],
 
@@ -127,6 +134,10 @@
 				"notFound": {
 					"viewName": "NotFound",
 					"viewId": "notFound"
+				},
+				"create": {
+					"viewName": "Create",
+					"viewId": "create"
 				}
 			}
 		}

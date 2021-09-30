@@ -34,9 +34,13 @@ sap.ui.define([
 				tableNoDataText : this.getResourceBundle().getText("tableNoDataText")
 			});
 			this.setModel(oViewModel, "worklistView");
+			this.getOwnerComponent().getRouter().getRoute("worklist").attachPatternMatched(this._onObjectMatched, this);
 
 		},
-
+		_onObjectMatched : function (oEvent) {
+			//debugger;
+			this.getView().byId("table").getBinding("items").refresh();
+		},
 		/* =========================================================== */
 		/* event handlers                                              */
 		/* =========================================================== */
