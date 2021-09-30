@@ -9,11 +9,18 @@ sap.ui.define([] , function () {
 		 * @param {string} sValue the number string to be rounded
 		 * @returns {string} sValue with 2 digits rounded
 		 */
-		numberUnit : function (sValue) {
-			if (!sValue) {
+		src: function (value) {
+			if (value != undefined) {
+				return `/incident/IncidentPhotos(${value})/image`;
+			} else {
 				return "";
 			}
-			return parseFloat(sValue).toFixed(2);
+		},
+	state: function (value) {
+			if (value == "critical") {
+				return "Error";
+			}
+			return "Success";
 		}
 
 	};
