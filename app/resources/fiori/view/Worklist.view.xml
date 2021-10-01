@@ -19,10 +19,13 @@
 				width="auto"
 				items="{
 					path: '/SafetyIncidents',
-					sorter: {
-						path: 'title',
-						descending: false
-					}
+					parameters: {
+		expand : 'incidentPhotos,category,priority'
+	},
+	sorter: {
+		path: 'createdAt',
+		descending: true
+	}
 				}"
 				noDataText="{worklistView>/tableNoDataText}"
 				growing="true"
@@ -43,12 +46,15 @@
 				</headerToolbar>
 
 				<columns>
-					<Column id="nameColumn">
-						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
-					</Column>
-					<Column id="unitNumberColumn" hAlign="End">
-						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
-					</Column>
+					<Column id="imageColumn" width="6rem">
+		<Text text="" id="nameColumnImage" />
+	</Column>
+	<Column id="nameColumn">
+		<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+	</Column>
+	<Column id="unitNumberColumn" hAlign="End">
+		<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+	</Column>
 				</columns>
 
 				<items>
@@ -56,14 +62,11 @@
 						type="Navigation"
 						press=".onPress">
 						<cells>
-							<ObjectIdentifier
-								title="{title}"/>
-							<ObjectNumber
-								number="{
-									path: '',
-									formatter: '.formatter.numberUnit'
-								}"
-								unit="{priority_code}"/>
+							<Image src="{path:'incidentPhotos/0/ID',formatter: '.formatter.src'}"  width="4rem" decorative="true"/>
+	<ObjectIdentifier 
+		title="{title}"
+		text="{description}"/>
+	<ObjectStatus text="{priority/name}" state="{path:'priority_code',formatter:'.formatter.state'}"/>
 						</cells>
 					</ColumnListItem>
 				</items>

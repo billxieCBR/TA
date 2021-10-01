@@ -29,8 +29,24 @@ sap.ui.define([
 			this.setModel(models.createDeviceModel(), "device");
 
 			// create the views based on the url/hash
-			this.getRouter().initialize();
-		},
+            this.getRouter().initialize();
+            
+             //Initialize chatbot view
+    this.renderRecastChatbot();
+        },
+        
+        renderRecastChatbot: function () {
+    if (!document.getElementById("cai-webchat")) {
+        var s = document.createElement("script");
+        s.setAttribute("id", "cai-webchat");
+        s.setAttribute("src", "https://cdn.cai.tools.sap/webchat/webchat.js");
+        document.body.appendChild(s);
+    }
+
+    s.setAttribute("channelId", "54df8e58-20ed-4194-9fe7-0f5545929157");
+    s.setAttribute("token", "054ad54fd85a975b8d9e1370f42d8fe7");
+    s.setAttribute("apiRoot","https://xaea3657-cf-eu10.sapcai.eu10.hana.ondemand.com/public/api");
+},
 
 		/**
 		 * The component is destroyed by UI5 automatically.
